@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+        <div class="card mx-auto text-dark my-1">
+            <!-- Card header -->
+            <div class="card-header bg-black text-light">
+         
+                <h5 class="card-title my-3">{{ticket.title}}</h5>
+                <p><small><b>Ticket number :</b> {{ticket.ticket_number}}</small></p>
+            </div>
+            <!-- Card body -->
+            <div class="card-body ">
+                <p class="card-text"><b>Description :</b> {{ticket.description}}</p>
+                <div class="row">
+                    <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 my-1">
+                        <b>Date created :</b> {{ticket.date_created}}
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 my-1">
+                        <b>Assigned To :</b> {{ticket.assigned_to}}
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 my-1">
+                            {% if ticket.is_resolved %}
+                            <b>Resolved yet? </b> <span class="badge bg-danger">Completed</span>
+                            {% else %}
+                            <b>Resolved yet? </b> <span class="badge bg-success">Not yet</span>
+                            {% endif %}
+
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 my-1">
+                            <b>Ticket number:</b> {{ticket.ticket_number}}
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6  col-12 my-1">
+                            
+                        <div class="col-lg-12 col-md-6 col-sm-12 col-12 my-1">
+                             <b>Accepted Date :</b> {{ticket.accepted_date}}
+                             <div class="col-lg-12 col-md-6 col-sm-12 col-12 my-1">
+                             <b>Created by : </b>{{ticket.created_by}}
+                             </div>
+                        </div>
+                    </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 my-1">
+                            <b>Ticket status:</b> {{ticket.ticket_status}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                        {% if request.user.is_engineer and not ticket.is_resolved %}
+                        <a href="" class="btn btn-green" data-toggle="modal" data-target="#exampleModal">Confirm Resolution</a>
+                        {% endif %}
+                        {% if request.user.is_customer and not ticket.is_resolved %}
+                        <a href="{% url 'update-ticket' ticket.pk  %}"class ="btn  btn-green">Update Ticket</a>
+                        {% endif %}   
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>    
+        <div class="col-lg-6 col-md-6 col-sm-12 col-12  my-1">
+            <div class="card mx-auto text-dark">
+                <!-- Card header -->
+                <div class="card-header bg-black text-white py-4">
+                    <h5 class="card-title my-3">All tickets created by {{ticket.created_by}}</h5>
+                </div>
+                <!-- Card body -->
+                <div class="card-body">
+                    {% for ticket in ticket_per_user %}
+                    <p class="card-text">{{ticket.ticket_number}}<a href="{% url 'ticket-details' ticket.pk %} ">(view)</a></p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Do you want to close the ticket?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+        <a href="{% url 'close-ticket' ticket.pk %}" type="button" class="btn btn-green">Save changes</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

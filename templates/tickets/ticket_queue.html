@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card mx-auto" >
+  <div class="card-body">
+    <h5 class="card-title mb-3 text-dark fw-bold">New Ticket</h5>
+    <table class="table table-bordered">
+      <thead>
+        <th scope="col">Ticket ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created On</th>
+        <th scope="col">Created by
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+<!--        <th scope="col">Action</th>-->
+      </thead>
+      <tbody>
+        {% for ticket in tickets %}
+          <tr>
+            <td><small>{{ ticket.ticket_number }}</small></td>
+            <td><small>{{ ticket.title }}</small></td>
+            <td><small>{{ ticket.date_created }}</small></td>
+
+            <td><small>{{ticket.created_by}}</small></td>
+             {% if ticket.ticket_status == 'Active' %}
+              <td><span class="badge bg-success">Active</span></td>
+            {% elif ticket.ticket_status == 'Pending' %}
+              <td><span class="badge bg-warning">Pending</span></td>
+            {% elif ticket.ticket_status == 'Completed' %}
+              <td><span class="badge bg-danger">Completed</span></td>
+            {% endif %}
+            <td><a href="{% url 'accept-ticket' ticket.pk %}">Accepts</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

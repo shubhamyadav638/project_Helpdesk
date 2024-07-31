@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+    <title>Starter Template for Bootstrap</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+    {% if request.user.is_customer %}
+
+    <header class="p-3 mb-3 border-bottom">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <a href="/" class="nav-link px-2 link-secondary lg-back">Ticketspan</a>
+                </div>
+                <div>
+                    <span class="px-4">{{request.user.username}}</span>
+                    <a href="{% url 'logout' %}" class=" btn btn-dark bg-dark text-light">logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid border-bottom">
+        <div class="container">
+            <div class="row justify-content-start align-items-center py-3">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                    <div class="card">
+                        <div class="card-body card-all py-5">
+                            <h5 class="card-title">All Tickets</h5>
+                            <a href="{% url 'all-tickets' %}" class="btn btn-dark">View Tickets</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                    <div class="card ">
+                        <div class="card-body card-res py-5">
+                            <h5 class="card-title">Ticket </h5>
+
+                            <a href="{% url 'create-ticket' %}" class="btn btn-dark">Add Ticket</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% elif request.user.is_engineer %}
+
+
+    <header class="p-3 mb-3 border-bottom">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <a href="/" class="nav-link px-2 link-secondary lg-back">Ticketspan</a>
+                </div>
+                <div>
+                    <span class="px-4">{{request.user.username}}</span>
+                    <a href="{% url 'logout' %}" class=" btn btn-dark bg-dark text-light">logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid border-bottom">
+        <div class="container">
+            <div class="row justify-content-center align-items-center py-3">
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                    <div class="card">
+                        <div class="card-body card-all">
+                            <h5 class="card-title">All</h5>
+                            <p class="card-text fs-1">20<span>
+                                <i class="bi bi-clipboard-data"></i>
+                            </span></p>
+                            <a href="{% url 'all-engineer-tickets' %}" class="btn btn-dark">View Tickets</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                    <div class="card my-2">
+                        <div class="card-body card-new">
+                            <h5 class="card-title ">NEW</h5>
+                            <p class="card-text fs-1">40 <span>
+                                <i class="bi bi-database-down"></i>
+                            </span></p>
+                            <a href="{% url 'ticket-queue' %}" class="btn btn-dark">View Tickets</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                    <div class="card">
+                        <div class="card-body card-wip">
+                            <h5 class="card-title">Work in progresss</h5>
+                            <p class="card-text fs-1">100 <span>
+                                <i class="bi bi-ui-checks-grid"></i>
+                            </span></p>
+                            <a href="{% url 'workspace' %}" class="btn btn-dark">View Tickets</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                    <div class="card">
+                        <div class="card-body card-res">
+                            <h5 class="card-title">Resolve</h5>
+                            <p class="card-text fs-1">500 <span>
+                                <i class="bi bi-check-circle"></i>
+                            </span></p>
+                            <a href="{% url 'all-closed-ticket' %}" class="btn btn-dark">View Tickets</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+    <section class="vh-100 bg-transparent" style="background-color: rgba(198, 198, 198, 0.434);">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100 ">
+                <div class="col col-xl-10 ">
+                    <div class="card card-blur" style="border-radius: 1rem;">
+                        <div class="row g-0">
+                            <div class="col-md-6 col-lg-5 d-none d-md-block">
+                                <img src="/static/img/pexels.jpeg" alt="login form" class="img-fluid h-100 object-fit-cover" style="border-radius: 1rem 0 0 1rem;" />
+                            </div>
+                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                <div class="card-body p-4 p-lg-5 text-black">
+
+                                    <form method="POST" action="{% url 'login' %}" id="loginform" autocomplete="off">
+                                        {% csrf_token %}
+                                        <div class="d-flex align-items-center mb-3 pb-1">
+                                            <span class="h1 fw-bold mb-0 lg-back">TicketSpan</span>
+                                        </div>
+
+                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account
+                                        </h5>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="username">UserName</label>
+                                            <input type="text" name="username" id="username" class="form-control" required />
+
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="password">Password</label>
+                                            <input type="password" id="password" name="password" class="form-control" required />
+
+                                        </div>
+
+                                        <div class="pt-1 mb-4">
+                                            <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+                                        </div>
+                                        <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="{%url 'register-customer' %}" style="color: #393f81;">Register here</a></p>
+                                        <a href="#!" class="small text-muted">Terms of use.</a>
+                                        <a href="#!" class="small text-muted">Privacy policy</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <div class="container mt-5">
+
+        {% if messages %} {% for message in messages %}
+        <div class="alert alert-{{message.tags}}" role="alert">
+            {{message}}
+        </div>
+        {% endfor %} {% endif %} {% block content %} {% endblock content%}
+    </div>
+
+    <!-- Bootstrap core JavaScript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="/static/bootstrap/js/bootstrap.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME" chat-title="Shubham" agent-id="ad2b39e9-f7ee-41aa-9831-2876d7f28474" language-code="en"></df-messenger>
+</body>
+
+</html>

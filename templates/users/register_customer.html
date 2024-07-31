@@ -1,0 +1,61 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<section class="vh-100 bg-transparent" style="background-color: rgba(198, 198, 198, 0.434);">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100 ">
+            <div class="col col-xl-10 ">
+                <div class="card card-blur" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <div class="col-md-6 col-lg-5 d-none d-md-block">
+                            <img src="/static/img/pexels.jpeg" alt="login form"
+                                class="img-fluid h-100 object-fit-cover" style="border-radius: 1rem 0 0 1rem;" />
+                        </div>
+                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+                                <!-- Register form -->
+                                <div class="d-flex align-items-center mb-3 pb-1">
+                                    <span class="h1 fw-bold mb-0 lg-back">TicketSpan</span>
+                                </div>
+                                <div class="container mt-5">
+                                    <h3>Register</h3>
+                                    <form id="createUserForm" method="POST">
+                                        {% csrf_token %}
+
+                                        <div class="mb-3">
+                                            <label for="username" class="form-label">Username</label>
+                                            <input type="text" class="form-control" name="username" id="username"
+                                                required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" name="email" id="email"
+                                                required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="password1" class="form-label">Password</label>
+                                            <input type="password" class="form-control" id="password1"
+                                                name="password1" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="password2" class="form-label">Password</label>
+                                            <input type="password" class="form-control" id="password2"
+                                                name="password2" required>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-dark">Create User</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+

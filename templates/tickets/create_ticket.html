@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+{% block content %}
+<div class="container ">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 border p-4 border-rounded shadow-sm p-3 mb-5 bg-white rounded rounded-4" >
+      <h3 class=" fs-3 mb-4 bg-black text-light py-2 text-center">Create a New Ticket</h3>
+           <form   method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_title"  class="form-label">Title</label>
+            <input class="form-control" type="text" id="id_title" name="title">
+        </div>
+        <div class="mb-3">
+            <label for="id_description"  class="form-label">Description</label>
+            <textarea  class="form-control" id="id_description" name="description"></textarea>
+        </div>
+        <button type="submit" class="btn btn-green">Create Ticket</button>
+    </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+

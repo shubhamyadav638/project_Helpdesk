@@ -1,0 +1,101 @@
+html {
+    font-size: 90%;
+}
+
+body {
+    color: #000 !important;
+}
+
+.btn-green {
+    background-color: #00F260;
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn-green:hover {
+    background-color: #00F260;
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid #00F260;
+}
+
+.card-blur {
+    backdrop-filter: blur(10px) saturate(0%);
+    -webkit-backdrop-filter: blur(10px) saturate(0%);
+    background-color: rgba(255, 255, 255, 0.36);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.5);
+    box-shadow: 0px 1px 6px rgba(255, 255, 255, 0.5);
+}
+
+.lg-back {
+    font-size: 72px;
+    background: -webkit-linear-gradient(45deg, #0b366a, #3535a2, #071952);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.card-blur {
+    backdrop-filter: blur(10px) saturate(0%);
+    -webkit-backdrop-filter: blur(10px) saturate(0%);
+    background-color: rgba(255, 255, 255, 0.36);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+}
+
+.lg-back {
+    font-size: 23px;
+    background: -webkit-linear-gradient(45deg, #0b366a, #3535a2, #071952);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.card {
+    color: #fff;
+}
+
+.card-all {
+    background: #00F260;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0575E6, #00F260);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0575E6, #00F260);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.card-new {
+    background: #4776E6;
+    /* fallback for old browsers */
+    background: -webkitlinear-gradient(to right, #A45BF2, #5078F0);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #A45BF2, #5078F0)
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.card-wip {
+    background: #E55D87;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5FC3E4, #E55D87);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5FC3E4, #E55D87);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.card-res {
+    background: #24C6DC;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #514A9D, #24C6DC);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #514A9D, #24C6DC);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+table#ticket-data-table {
+    width: 100% !important;
+}
